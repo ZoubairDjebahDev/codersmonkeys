@@ -61,7 +61,7 @@ const config: Config = {
             fontWeight: "400",
           },
         ],
-        lg: /* Body ld - 21/30 */ [
+        lg: /* Body lg - 21/30 */ [
           "21px",
           {
             lineHeight: "30px",
