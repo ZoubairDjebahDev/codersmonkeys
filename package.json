@@ -10,6 +10,7 @@
     "deploy": "next build && firebase deploy"
   },
   "dependencies": {
+    "clsx": "^2.0.0",
     "firebase": "^10.6.0",
     "next": "14.0.3",
     "react": "^18",
