@@ -1,7 +1,8 @@
 import { IconProps } from "@/types/iconProps";
 import clsx from "clsx";
+import { Spinner } from "../spinner/spinner";
 
-interface ButtonProps {
+interface Props {
   size?: "small" | "medium" | "large";
   variant?: "accent" | "secondary" | "outline" | "disabled" | "icon";
   icon?: IconProps;
@@ -21,13 +22,13 @@ const Button = ({
   isDisabled,
   isLoading,
   children,
-}: ButtonProps) => {
-  let variantStyles: string = "";
-  let sizeStyles: string = "";
-  let iconSize: number = 0;
+}: Props) => {
+  let variantStyles: string = "",
+    sizeStyles: string = "",
+    iconSize: number = 0;
 
   switch (variant) {
-    case "accent":
+    case "accent": // Default
       variantStyles = "bg-primary hover:bg-primary-400 text-white rounded";
       break;
     case "secondary":
@@ -42,6 +43,7 @@ const Button = ({
       variantStyles =
         "bg-gray-400 border border-gray-500 text-gray-600 rounded cursor-not-allowed";
       break;
+
     case "icon":
       if (iconTheme === "accent") {
         variantStyles =
@@ -65,16 +67,14 @@ const Button = ({
           : "px-[14px] py-[12px]"
       }`;
       iconSize = 18;
-
       break;
-    case "medium":
+    case "medium": // Default
       sizeStyles = `text-caption3 font-medium ${
         variant === "icon"
           ? "flex items-center justify-center w-[50px] h-[50px]"
           : "px-[18px] py-[15px]"
       }`;
       iconSize = 20;
-
       break;
     case "large":
       sizeStyles = `text-caption3 font-medium ${
@@ -85,6 +85,7 @@ const Button = ({
       iconSize = 24;
       break;
 
+    default:
       break;
   }
 
@@ -92,18 +93,37 @@ const Button = ({
     <>
       <button
         type="button"
-        className={clsx(variantStyles, sizeStyles, "")}
+        className={clsx(
+          variantStyles,
+          sizeStyles,
+          isLoading && "cursor-wait",
+          "relative"
+        )}
+        onClick={() => console.log("click")}
         disabled={isDisabled}
       >
-        {icon && variant === "icon" ? (
-          <icon.icon size={iconSize} />
-        ) : (
-          <div className={clsx(icon && "flex items-center gap-2")}>
-            {icon && iconPosition === "left" && <icon.icon size={iconSize} />}
-            {children}
-            {icon && iconPosition === "right" && <icon.icon size={iconSize} />}
+        {isLoading && (
+          <div className="absolute inset-0 flex items-center justify-center">
+            {variant === "accent" || variant === "icon" ? (
+              <Spinner size="small" variant="white" />
+            ) : (
+              <Spinner size="small" />
+            )}
           </div>
         )}
+        <div className={clsx(isLoading && "invisible")}>
+          {icon && variant === "icon" ? (
+            <icon.icon size={iconSize} />
+          ) : (
+            <div className={clsx(icon && "flex items-center gap-2")}>
+              {icon && iconPosition === "left" && <icon.icon size={iconSize} />}
+              {children}
+              {icon && iconPosition === "right" && (
+                <icon.icon size={iconSize} />
+              )}
+            </div>
+          )}
+        </div>
       </button>
     </>
   );
