@@ -1,5 +1,7 @@
 import Seo from "@/ui/components/seo/seo";
+import Button from "@/ui/design-system/button/button";
 import Typography from "@/ui/design-system/typography/typography";
+import { RiUser3Line } from "react-icons/ri";
 
 const Home = () => {
   return (
@@ -118,6 +120,14 @@ const Home = () => {
           </div>
         </div>
       </div>
+      <Button
+        size="small"
+        icon={{ icon: RiUser3Line }}
+        iconPosition="left"
+        variant="secondary"
+      >
+        Connexion
+      </Button>
     </>
   );
 };
