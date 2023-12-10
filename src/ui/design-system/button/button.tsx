@@ -97,7 +97,7 @@ const Button = ({
           variantStyles,
           sizeStyles,
           isLoading && "cursor-wait",
-          "relative"
+          "relative animate"
         )}
         onClick={() => console.log("click")}
         disabled={isDisabled}
