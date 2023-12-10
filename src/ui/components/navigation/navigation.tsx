@@ -3,6 +3,7 @@ import Container from "@/ui/components/container/container";
 import Logo from "@/ui/design-system/logo/logo";
 import Button from "@/ui/design-system/button/button";
 import Link from "next/link";
+import ActiveLink from "./active-link";
 
 interface NavigationProps {}
 
@@ -29,6 +30,7 @@ const Navigation = ({}: NavigationProps) => {
             component="div"
             className="flex flex-center gap-7"
           >
+            <ActiveLink href="/">Accueil</ActiveLink>
             <Link href="/projets">Projets</Link>
             <Link href="/formations">Formations</Link>
             <Link href="/contact">Contact</Link>
