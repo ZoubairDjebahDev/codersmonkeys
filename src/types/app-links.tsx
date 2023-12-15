@@ -1,7 +1,9 @@
+import { LinkType } from "@/lib/link-types";
+
 interface AppLinks {
   label: string;
   baseUrl: string;
-  type: string; // @Todo refactor this
+  type: LinkType;
 }
 
 interface FooterLinks {

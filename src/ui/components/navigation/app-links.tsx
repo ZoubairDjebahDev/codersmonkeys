@@ -106,10 +106,4 @@ const footerLinks: FooterLinks[] = [
   },
 ];
 
-export {
-  footerApplicationLinks,
-  footerUsersLinks,
-  footerInformationsLinks,
-  footerSocialNetworksLinks,
-  footerLinks,
-};
+export default footerLinks;

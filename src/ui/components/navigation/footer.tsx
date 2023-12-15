@@ -3,8 +3,9 @@ import  Typography  from "@/ui/design-system/typography/typography";
 import Image from "next/image";
 import { v4 as uuidv4 } from "uuid";
 import Container  from "@/ui/components/container/container";
-import { footerLinks } from "./app-links";
+import footerLinks  from "@/ui/components/navigation/app-links";
 import ActiveLink from "./active-link";
+import { LinkTypes } from "@/lib/link-types";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -60,12 +61,12 @@ interface footerLinkProps {
 const FooterLink = ({ data }: footerLinkProps) => {
   const LinksList = data.links.map((link) => (
     <div key={uuidv4()}>
-      {link.type === "internal" && (
+      {link.type === LinkTypes.INTERNAL && (
         <ActiveLink key={uuidv4()} href={link.baseUrl}>
           {link.label}
         </ActiveLink>
       )}
-      {link.type === "external" && (
+      {link.type === LinkTypes.EXTERNAL && (
         <a href={link.baseUrl} target="_blank">
           {link.label}
         </a>
