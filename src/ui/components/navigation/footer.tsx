@@ -1,11 +1,12 @@
+import { LinkTypes } from "@/lib/link-types";
 import { FooterLinks } from "@/types/app-links";
-import  Typography  from "@/ui/design-system/typography/typography";
+import Container from "@/ui/components/container/container";
+import { footerLinks } from "@/ui/components/navigation/app-links";
+import { SocialNetworksButtons } from "@/ui/components/navigation/social-networks-buttons";
+import Typography from "@/ui/design-system/typography/typography";
 import Image from "next/image";
 import { v4 as uuidv4 } from "uuid";
-import Container  from "@/ui/components/container/container";
-import footerLinks  from "@/ui/components/navigation/app-links";
 import ActiveLink from "./active-link";
-import { LinkTypes } from "@/lib/link-types";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -47,7 +48,9 @@ const Footer = () => {
               {` - Remote monkey SASU`}
             </Typography>
           </div>
-          <div className="">Liste des liens</div>
+          <div>
+            <SocialNetworksButtons />
+          </div>
         </div>
       </Container>
     </div>
